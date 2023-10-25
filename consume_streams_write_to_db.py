@@ -64,6 +64,9 @@ ehConf["eventhubs.startingPosition"] = json.dumps(startingEventPosition)
 ehConf["eventhubs.maxEventsPerTrigger"]= 5
 
 try:
+    #SparkSession
+    from pyspark.sql import SparkSession
+    spark = SparkSession.builder.appName("UseCase").getOrCreate()
     ##Read Stream
     df= spark.readStream.format("eventhubs").options(**ehConf).load()
     df1 = df.withColumn("body", F.from_json(df.body.cast("string"), json_schema))
