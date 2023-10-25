@@ -9,4 +9,4 @@
 
 ## Architecture
 
-!architecture.jpg
+!architecture.JPG
